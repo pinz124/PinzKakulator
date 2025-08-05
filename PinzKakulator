@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator EZZ DEK</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #f2f2f2;
+    }
+    input, select, button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+    }
+    #hasil, #pesan {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    #credit {
+      margin-top: 50px;
+      font-size: 14px;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Kalkulator</h1>
+
+  <input type="number" id="angka1" placeholder="Angka 1">
+  <select id="operator">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+  </select>
+  <input type="number" id="angka2" placeholder="Angka 2">
+  <br>
+  <button onclick="hitung()">Hitung</button>
+
+  <div id="hasil"></div>
+  <div id="pesan"></div>
+
+  <div id="credit">Developer: PINZZ</div>
+
+  <script>
+    function hitung() {
+      const angka1 = parseFloat(document.getElementById("angka1").value);
+      const angka2 = parseFloat(document.getElementById("angka2").value);
+      const operator = document.getElementById("operator").value;
+      let hasil;
+
+      if (isNaN(angka1) || isNaN(angka2)) {
+        document.getElementById("hasil").textContent = "Masukkan angka yang valid!";
+        document.getElementById("pesan").textContent = "";
+        return;
+      }
+
+      switch(operator) {
+        case "+": hasil = angka1 + angka2; break;
+        case "-": hasil = angka1 - angka2; break;
+        case "*": hasil = angka1 * angka2; break;
+        case "/": 
+          if (angka2 === 0) {
+            document.getElementById("hasil").textContent = "Tidak bisa dibagi 0!";
+            document.getElementById("pesan").textContent = "";
+            return;
+          }
+          hasil = angka1 / angka2; 
+          break;
+      }
+
+      document.getElementById("hasil").textContent = "Hasil: " + hasil;
+      document.getElementById("pesan").textContent = "EZZ DEK 😎";
+    }
+  </script>
+
+</body>
+</html>
